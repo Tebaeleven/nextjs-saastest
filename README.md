@@ -1,3 +1,12 @@
+# 仕様
+- Github,Googleなどでログインができます
+  - 認証Providerは追加できます
+- 登録されたデータはPrisma+PostgreSQLで保存されます
+- デフォルトで全てのページに認証がかかっています
+  - セキュア
+  - 認証がいらない（誰でも閲覧できる）ようにするにはrequireAuthをfalseにする
+    - Home.requireAuth = false;
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -33,6 +33,7 @@ const SignIn = ({
 
 export default SignIn;
 SignIn.requireAuth=false
+
 export const getServerSideProps = async () => {
     // 複数の認証を取得
     const providers = await getProviders();

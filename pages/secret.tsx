@@ -6,4 +6,3 @@ const Secret: CustomNextPage = () => {
 };
 
 export default Secret;
-Secret.requireAuth=true
