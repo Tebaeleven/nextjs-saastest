@@ -10,16 +10,16 @@ const SignIn = ({
                 Object.values(providers).map((provider) => {
                     if (provider.name === "GitHub") {
                         return (
-                            <div key={provider.id}>
-                                <button onClick={() => signIn(provider.id)}>
+                            <div key={provider.id} className="m-5">
+                                <button onClick={() => signIn(provider.id)} className="text-white bg-gray-600 hover:bg-gray-700 rounded-lg text-sm px-5 py-3">
                                     Sign in with {provider.name}
                                 </button>
                             </div>
                         );
                     } else if(provider.name === "Google") {
                         return (
-                            <div key={provider.id}>
-                                <button onClick={() => signIn(provider.id)}>
+                            <div key={provider.id} className="m-5">
+                                <button onClick={() => signIn(provider.id)} className="text-white bg-blue-600 hover:bg-blue-700 rounded-lg text-sm px-5 py-3">
                                     Sign in with {provider.name}
                                 </button>
                             </div>
