@@ -1,5 +1,6 @@
 import { getProviders, signIn } from "next-auth/react";
 import { InferGetServerSidePropsType } from "next";
+import { CustomNextPage } from "@/types/custom-next-page";
 
 const SignIn = ({
     providers,
@@ -31,7 +32,7 @@ const SignIn = ({
 };
 
 export default SignIn;
-
+SignIn.requireAuth=false
 export const getServerSideProps = async () => {
     // 複数の認証を取得
     const providers = await getProviders();

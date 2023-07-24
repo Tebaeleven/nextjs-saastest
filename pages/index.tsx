@@ -26,8 +26,9 @@ export default function Home() {
             )}
 
             <Link href="/secret" className="font-medium text-blue-600 dark:text-blue-500 underline">
-              <p className="">Secret Page</p>
+                Secret Page
             </Link>
         </main>
     );
 }
+Home.requireAuth=false

@@ -13,17 +13,23 @@ export default function App({
     Component,
     pageProps: { session, ...pageProps },
 }: CustomAppProps) {
-  return (
-    <SessionProvider
-      session={session}
-    >
-        {Component.requireAuth ? (
-          <AuthGuard>
-            <Component {...pageProps} />
-          </AuthGuard>
-        ) : (
-          <Component {...pageProps} />
-        )}
-    </SessionProvider>
-  );
+    return (
+        <SessionProvider session={session}>
+            {(() => {
+                console.log(Component.requireAuth)
+                if (
+                    typeof Component.requireAuth === "undefined" ||
+                    Component.requireAuth
+                ) { //requireAuthが未設定 or Trueの場合は認証
+                    return (
+                        <AuthGuard>
+                            <Component {...pageProps} />
+                        </AuthGuard>
+                    );
+                } else { //falseにしている場合は認証しない
+                    return <Component {...pageProps} />;
+                }
+            })()}
+        </SessionProvider>
+    );
 }
