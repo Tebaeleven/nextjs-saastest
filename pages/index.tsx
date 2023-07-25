@@ -1,12 +1,33 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function Home() {
+export default function Home({count}) {
     const { data, status } = useSession();
 
+    const [apiResponse, setApiResponse] = useState("");
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                // const response = await axios.get("/api/text");
+                const response = await axios.post("/api/getApiLimit");
+                console.log(response,"dalkjjsdalkljkasdf")
+                setApiResponse(response.data.count);
+            } catch (error) {
+                console.error("Error fetching API:", error);
+            }
+        }
+
+        fetchData();
+    }, []);
     return (
         <main>
             <h1 className="text-5xl">トップページ</h1>
+            <p>だだ{count}</p>
+            <p>API Response: {apiResponse}</p>
 
             {data?.user?.name ? (
                 data?.user?.name
@@ -34,5 +55,6 @@ export default function Home() {
         </main>
     );
 }
+import prisma from "@/lib/prisma";
 
 Home.requireAuth = false;
