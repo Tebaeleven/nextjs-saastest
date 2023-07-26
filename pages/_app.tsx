@@ -16,7 +16,6 @@ export default function App({
     return (
         <SessionProvider session={session}>
             {(() => {
-                console.log(Component.requireAuth)
                 if (
                     typeof Component.requireAuth === "undefined" ||
                     Component.requireAuth

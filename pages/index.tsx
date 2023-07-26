@@ -3,18 +3,18 @@ import { signOut, useSession } from "next-auth/react";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {getApiLimitCount} from "@/lib/api-limit"
 
 export default function Home({count}) {
     const { data, status } = useSession();
 
     const [apiResponse, setApiResponse] = useState("");
-
     useEffect(() => {
         async function fetchData() {
             try {
                 // const response = await axios.get("/api/text");
                 const response = await axios.post("/api/getApiLimit");
-                console.log(response,"dalkjjsdalkljkasdf")
+                console.log(response.data.count)
                 setApiResponse(response.data.count);
             } catch (error) {
                 console.error("Error fetching API:", error);
